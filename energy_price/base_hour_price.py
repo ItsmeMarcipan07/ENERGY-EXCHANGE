@@ -1,8 +1,8 @@
 import csv
 
+
 def base_hour(path):
     with open(path, mode='r') as file:
-        # reading the CSV file
         csvFile = csv.reader(file)
         row = 0
         first_day = 0
@@ -13,24 +13,26 @@ def base_hour(path):
         sixth_day = 0
         seventh_day = 0
         for lines in csvFile:
-            if row == 0:
-                pass
-            if row == 1:
-                first_day += float(lines[5])
-            elif row == 2:
-                second_day += float(lines[5])
-            elif row == 3:
-                third_day += float(lines[5])
-            elif row == 4:
-                fourth_day += float(lines[5])
-            elif row == 5:
-                fifth_day += float(lines[5])
-            elif row == 6:
-                sixth_day += float(lines[5])
-            elif row == 7:
-                seventh_day += float(lines[5])
-                row = 1
-                continue
+            match row:
+                case 0:
+                    pass
+                case 1:
+                    first_day += float(lines[5])
+                case 2:
+                    second_day += float(lines[5])
+                case 3:
+                    third_day += float(lines[5])
+                case 4:
+                    fourth_day += float(lines[5])
+                case 5:
+                    fifth_day += float(lines[5])
+                case 6:
+                    sixth_day += float(lines[5])
+                case 7:
+                    seventh_day += float(lines[5])
+                    row = 1
+                    continue
             row += 1
-    return [first_day / 24, second_day / 24, third_day / 24, fourth_day / 24, fifth_day / 24, sixth_day / 24,\
-        seventh_day / 24]
+
+    return [f'{first_day / 24:.2f}', f'{second_day / 24:.2f}', f'{third_day / 24:.2f}', f'{fourth_day / 24:.2f}',
+            f'{fifth_day / 24:.2f}', f'{sixth_day / 24:.2f}', f'{seventh_day / 24:.2f}']
