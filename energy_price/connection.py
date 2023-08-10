@@ -7,9 +7,9 @@ from tkinter import messagebox
 
 
 def connection_plc():
-    client = ModbusClient("127.0.0.1", 502)  # create modbus client with PLC_IP and PLC_PORT
-    client.connect()  # create connection
-    return client  # return connection
+    client = ModbusClient("127.0.0.1", 502)
+    client.connect()
+    return client
 
 
 try:
